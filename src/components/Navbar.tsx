@@ -23,16 +23,23 @@ export default function Navbar() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-      scrolled ? 'shadow-sm py-3' : 'py-5'
+      scrolled ? 'shadow-sm py-2 md:py-3' : 'py-3 md:py-5'
     }`} style={{ backgroundColor: '#f6ebde' }}>
-      <div className="max-w-7xl mx-auto px-8 flex items-center justify-between gap-8">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between gap-4">
 
         {/* Logo */}
-        <Link href="#home" className="flex items-center gap-4 shrink-0">
-          <Image src="/logo.png" alt="CM HR Studio" width={70} height={70} className="object-contain" />
+        <Link href="#home" className="flex items-center gap-3 shrink-0">
+          <Image
+            src="/logo.png"
+            alt="CM HR Studio"
+            width={50}
+            height={50}
+            className="object-contain md:w-[70px] md:h-[70px]"
+          />
           <div>
-            <p className="font-display font-semibold text-wine text-xl leading-none">CM HR Studio</p>
-            <p className="font-body text-[10px] text-[#73223e]/60 tracking-wide leading-none mt-1">
+            <p className="font-display font-semibold text-wine text-lg md:text-xl leading-none">CM HR Studio</p>
+            {/* Tagline: oculto en mobile, visible en desktop */}
+            <p className="hidden md:block font-body text-[10px] text-[#73223e]/60 tracking-wide leading-none mt-1">
               Gestión de Talento | Capacitación | Desarrollo Humano
             </p>
           </div>
@@ -51,12 +58,9 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Icons — eliminados */}
-
-
-        {/* Mobile */}
-        <button className="md:hidden text-wine" onClick={() => setOpen(!open)}>
-          {open ? <X size={24} /> : <Menu size={24} />}
+        {/* Mobile hamburger */}
+        <button className="md:hidden text-wine p-1" onClick={() => setOpen(!open)}>
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 

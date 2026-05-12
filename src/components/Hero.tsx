@@ -5,21 +5,35 @@ import { ArrowRight, Users, Target, TrendingUp, Heart } from 'lucide-react'
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="home" className="relative md:min-h-screen md:flex md:items-center md:overflow-hidden">
 
-      {/* BG image */}
-      <div className="absolute inset-0 z-0">
+      {/* BG image — solo desktop (overlay completo) */}
+      <div className="absolute inset-0 z-0 hidden md:block">
         <Image
           src="/hero.png"
           alt="Hero background"
           fill
-          className="object-cover object-top md:object-center"
+          className="object-cover object-center"
           priority
           unoptimized
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-36 pb-28 md:pt-52 md:pb-44 w-full">
+      {/* Imagen mobile — se muestra completa, sin recorte */}
+      <div className="relative w-full md:hidden pt-[72px]">
+        <Image
+          src="/hero.png"
+          alt="Hero background"
+          width={800}
+          height={600}
+          className="w-full h-auto"
+          priority
+          unoptimized
+        />
+      </div>
+
+      {/* Contenido */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-10 md:pt-52 md:pb-44 w-full">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -42,13 +56,13 @@ export default function Hero() {
       </div>
 
       {/* Barra de valores */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 bg-wine">
+      <div className="relative md:absolute md:bottom-0 md:left-0 md:right-0 z-10 bg-wine">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-6 md:py-8 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
           {[
-            { icon: <Users size={28} />,      title: 'Enfoque humano',      desc: 'Ponemos a las personas en el centro.' },
-            { icon: <Target size={28} />,     title: 'Estrategia a medida', desc: 'Soluciones adaptadas a cada organización.' },
-            { icon: <TrendingUp size={28} />, title: 'Resultados reales',   desc: 'Impacto medible en el desarrollo y desempeño.' },
-            { icon: <Heart size={28} />,      title: 'Pasión y compromiso', desc: 'Acompañamos cada proceso con dedicación.' },
+            { icon: <Users size={24} />,      title: 'Enfoque humano',      desc: 'Ponemos a las personas en el centro.' },
+            { icon: <Target size={24} />,     title: 'Estrategia a medida', desc: 'Soluciones adaptadas a cada organización.' },
+            { icon: <TrendingUp size={24} />, title: 'Resultados reales',   desc: 'Impacto medible en el desarrollo y desempeño.' },
+            { icon: <Heart size={24} />,      title: 'Pasión y compromiso', desc: 'Acompañamos cada proceso con dedicación.' },
           ].map((v, i) => (
             <div key={i} className="flex items-center gap-3">
               <span className="shrink-0" style={{ color: '#e9ad69' }}>{v.icon}</span>
