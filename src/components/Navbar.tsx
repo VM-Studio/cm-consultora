@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-      scrolled ? 'shadow-sm py-2 md:py-3' : 'py-3 md:py-5'
+      scrolled ? 'shadow-sm py-1 md:py-2' : 'py-2 md:py-3'
     }`} style={{ backgroundColor: '#f6ebde' }}>
       <div className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between gap-4">
 

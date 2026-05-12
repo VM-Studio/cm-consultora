@@ -22,7 +22,7 @@ export default function Hero() {
       {/* ── MOBILE: imagen celular.png como fondo, título y botón encima ── */}
       <div className="relative md:hidden w-full">
         {/* Imagen ocupa toda la pantalla verticalmente */}
-        <div className="relative w-full" style={{ paddingTop: '72px' }}>
+        <div className="relative w-full" style={{ paddingTop: '62px' }}>
           <Image
             src="/celular.png"
             alt="Hero background"
@@ -34,7 +34,7 @@ export default function Hero() {
           />
         </div>
         {/* Título + botón centrados, por encima de la imagen */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center" style={{ top: '72px' }}>
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center" style={{ top: '62px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ export default function Hero() {
       </div>
 
       {/* ── DESKTOP: contenido (título + botón) ── */}
-      <div className="relative z-10 hidden md:block max-w-7xl mx-auto px-6 pt-52 pb-44 w-full">
+      <div className="relative z-10 hidden md:block max-w-7xl mx-auto px-6 pt-40 pb-72 w-full">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
