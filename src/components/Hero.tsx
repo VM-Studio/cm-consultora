@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section id="home" className="relative md:min-h-screen md:flex md:items-center md:overflow-hidden">
 
-      {/* BG image — solo desktop (overlay completo) */}
+      {/* ── DESKTOP: imagen de fondo full-screen ── */}
       <div className="absolute inset-0 z-0 hidden md:block">
         <Image
           src="/hero.png"
@@ -19,21 +19,46 @@ export default function Hero() {
         />
       </div>
 
-      {/* Imagen mobile — se muestra completa, sin recorte */}
-      <div className="relative w-full md:hidden pt-[72px]">
-        <Image
-          src="/hero.png"
-          alt="Hero background"
-          width={800}
-          height={600}
-          className="w-full h-auto"
-          priority
-          unoptimized
-        />
+      {/* ── MOBILE: imagen celular.png como fondo, título y botón encima ── */}
+      <div className="relative md:hidden w-full">
+        {/* Imagen ocupa toda la pantalla verticalmente */}
+        <div className="relative w-full" style={{ paddingTop: '72px' }}>
+          <Image
+            src="/celular.png"
+            alt="Hero background"
+            width={800}
+            height={1100}
+            className="w-full h-auto"
+            priority
+            unoptimized
+          />
+        </div>
+        {/* Título + botón centrados, por encima de la imagen */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center" style={{ top: '72px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9 }}
+            className="flex flex-col items-center"
+          >
+            <h1
+              className="font-display text-4xl font-semibold leading-tight mb-8"
+              style={{ color: '#73223e' }}
+            >
+              Potenciamos personas, transformamos organizaciones
+            </h1>
+            <a
+              href="#acerca-de"
+              className="inline-flex items-center gap-2 font-body text-sm rounded-lg bg-wine text-white px-8 py-3.5 hover:bg-wine-dark transition-colors"
+            >
+              Conocé más <ArrowRight size={15} />
+            </a>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Contenido */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-10 md:pt-52 md:pb-44 w-full">
+      {/* ── DESKTOP: contenido (título + botón) ── */}
+      <div className="relative z-10 hidden md:block max-w-7xl mx-auto px-6 pt-52 pb-44 w-full">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -41,7 +66,7 @@ export default function Hero() {
           className="max-w-lg"
         >
           <h1
-            className="font-display text-4xl md:text-6xl font-semibold leading-tight mb-8 md:mb-10"
+            className="font-display text-6xl font-semibold leading-tight mb-10"
             style={{ color: '#73223e' }}
           >
             Potenciamos personas, transformamos organizaciones
@@ -55,7 +80,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Barra de valores */}
+      {/* ── Barra de valores ── */}
       <div className="relative md:absolute md:bottom-0 md:left-0 md:right-0 z-10 bg-wine">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-6 md:py-8 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
           {[
