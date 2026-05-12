@@ -5,10 +5,10 @@ import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 
 const links = [
-  { label: 'Home',      href: '#home' },
-  { label: 'Acerca de', href: '#acerca-de' },
-  { label: 'Servicios', href: '#servicios' },
-  { label: 'Contacto',  href: '#contacto' },
+  { label: 'Home',       href: '#home' },
+  { label: 'Acerca de',  href: '#acerca-de' },
+  { label: 'Servicios',  href: '#servicios' },
+  { label: 'Contacto',   href: '#contacto' },
 ]
 
 export default function Navbar() {
@@ -16,28 +16,26 @@ export default function Navbar() {
   const [open, setOpen]         = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
+    const fn = () => setScrolled(window.scrollY > 30)
+    window.addEventListener('scroll', fn)
+    return () => window.removeEventListener('scroll', fn)
   }, [])
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'bg-offwhite shadow-sm py-3' : 'bg-transparent py-5'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
+      scrolled ? 'shadow-sm py-3' : 'py-5'
+    }`} style={{ backgroundColor: '#f6ebde' }}>
+      <div className="max-w-7xl mx-auto px-8 flex items-center justify-between gap-8">
 
-        {/* Logo — coloca /public/logo.png */}
-        <Link href="#home">
-          <Image
-            src="/logo.png"
-            alt="CM HR Studio"
-            width={110}
-            height={110}
-            className="object-contain"
-          />
+        {/* Logo */}
+        <Link href="#home" className="flex items-center gap-4 shrink-0">
+          <Image src="/logo.png" alt="CM HR Studio" width={70} height={70} className="object-contain" />
+          <div>
+            <p className="font-display font-semibold text-wine text-xl leading-none">CM HR Studio</p>
+            <p className="font-body text-[10px] text-[#73223e]/60 tracking-wide leading-none mt-1">
+              Gestión de Talento | Capacitación | Desarrollo Humano
+            </p>
+          </div>
         </Link>
 
         {/* Desktop nav */}
@@ -46,45 +44,31 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="font-body text-sm uppercase tracking-widest text-[#2a2a2a] hover:text-wine transition-colors"
+              className="font-display text-base text-[#73223e] hover:text-[#5a1a30] transition-colors"
             >
               {l.label}
             </a>
           ))}
-          <a
-            href="#contacto"
-            className="font-body text-sm uppercase tracking-widest border border-wine text-wine px-5 py-2 hover:bg-wine hover:text-white transition-all"
-          >
-            Enviá tu CV
-          </a>
         </nav>
 
-        {/* Mobile toggle */}
-        <button className="md:hidden" onClick={() => setOpen(!open)} aria-label="Abrir menú">
+        {/* Icons — eliminados */}
+
+
+        {/* Mobile */}
+        <button className="md:hidden text-wine" onClick={() => setOpen(!open)}>
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-offwhite px-6 py-6 flex flex-col gap-6 border-t border-pink/20">
+        <div className="md:hidden bg-white px-6 py-6 flex flex-col gap-5 border-t border-pink/20">
           {links.map(l => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="font-body text-sm uppercase tracking-widest text-[#2a2a2a]"
-            >
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)}
+              className="font-body text-sm text-[#2a2a2a] hover:text-wine transition-colors">
               {l.label}
             </a>
           ))}
-          <a
-            href="#contacto"
-            onClick={() => setOpen(false)}
-            className="font-body text-sm uppercase tracking-widest border border-wine text-wine px-5 py-2 text-center"
-          >
-            Enviá tu CV
-          </a>
         </div>
       )}
     </header>

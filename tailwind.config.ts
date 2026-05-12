@@ -5,17 +5,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        wine:       '#9e2750',
-        pink:       '#f58fad',
-        olive:      '#676537',
-        sage:       '#a7a255',
-        gold:       '#fbd576',
-        terracotta: '#c46d31',
-        offwhite:   '#faf8f5',
+        wine:        '#73223e',
+        'wine-dark': '#5a1a30',
+        pink:        '#f58fad',
+        'pink-pale': '#fdf0f4',
+        olive:       '#676537',
+        sage:        '#a7a255',
+        gold:        '#fbd576',
+        terracotta:  '#c46d31',
+        offwhite:    '#faf7f4',
+        cream:       '#f5ede8',
       },
       fontFamily: {
         display: ['"Cormorant Garamond"', 'serif'],
         body:    ['Jost', 'sans-serif'],
+      },
+      borderRadius: {
+        xl2: '1.25rem',
       },
     },
   },

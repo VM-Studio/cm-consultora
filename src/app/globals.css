@@ -1,7 +1,7 @@
 /* ── Google Fonts ──────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap');
 
-/* ── Tailwind v4 (reemplaza @tailwind base/components/utilities) ── */
+/* ── Tailwind v4 ── */
 @import "tailwindcss";
 
 /* ── Carga el config de colores/fuentes (Tailwind v4) ─── */
@@ -9,27 +9,36 @@
 
 /* ── Variables CSS de marca ─────────────────────────────── */
 :root {
-  --color-wine:     #9e2750;
+  --wine:     #73223e;
+  --pink:     #f58fad;
+  --olive:    #676537;
+  --sage:     #a7a255;
+  --gold:     #fbd576;
+  --terr:     #c46d31;
+  --offwhite: #faf7f4;
+  --cream:    #f5ede8;
+
+  /* aliases para compatibilidad con componentes existentes */
+  --color-wine:     #73223e;
   --color-pink:     #f58fad;
   --color-olive:    #676537;
   --color-sage:     #a7a255;
   --color-gold:     #fbd576;
   --color-terr:     #c46d31;
-  --color-white:    #ffffff;
-  --color-offwhite: #faf8f5;
+  --color-offwhite: #faf7f4;
   --font-display:   'Cormorant Garamond', serif;
   --font-body:      'Jost', sans-serif;
 }
 
 /* ── Estilos base ────────────────────────────────────────── */
-* { scroll-behavior: smooth; }
+* { scroll-behavior: smooth; box-sizing: border-box; }
 
 body {
-  font-family: var(--font-body);
-  background-color: var(--color-offwhite);
+  font-family: 'Jost', sans-serif;
+  background-color: var(--offwhite);
   color: #2a2a2a;
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-display);
+  font-family: 'Cormorant Garamond', serif;
 }

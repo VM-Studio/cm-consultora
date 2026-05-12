@@ -32,15 +32,12 @@ export default function CVUpload() {
   }
 
   return (
-    <div className="mt-10">
-      <p className="font-body text-xs uppercase tracking-[0.3em] text-[#9e2750] mb-4">
-        Enviá tu CV
-      </p>
+    <div>
       <div
         onDrop={handleDrop}
         onDragOver={e => e.preventDefault()}
         onClick={() => inputRef.current?.click()}
-        className="border border-dashed border-[#9e2750]/40 p-10 text-center cursor-pointer hover:border-[#9e2750] hover:bg-[#9e2750]/5 transition-all"
+        className="border border-dashed border-[#73223e]/40 px-4 py-3 flex items-center gap-3 cursor-pointer hover:border-[#73223e] hover:bg-[#73223e]/5 transition-all"
       >
         <input
           ref={inputRef}
@@ -49,21 +46,18 @@ export default function CVUpload() {
           className="hidden"
           onChange={e => { if (e.target.files?.[0]) handleFile(e.target.files[0]) }}
         />
-        <Upload size={24} className="mx-auto mb-3 text-[#9e2750]/50" />
+        <Upload size={16} className="text-[#73223e]/50 shrink-0" />
         {file ? (
-          <p className="font-body text-sm text-[#9e2750]">{file.name}</p>
+          <p className="font-body text-sm text-[#73223e]">{file.name}</p>
         ) : (
-          <>
-            <p className="font-body text-sm text-[#2a2a2a]/60">Arrastrá tu CV acá o hacé click para seleccionar</p>
-            <p className="font-body text-xs text-[#2a2a2a]/40 mt-1">PDF, DOC, DOCX — máx. 5MB</p>
-          </>
+          <p className="font-body text-sm text-[#2a2a2a]/50">Adjuntá tu CV — PDF, DOC, DOCX (máx. 5MB)</p>
         )}
       </div>
       {file && status !== 'sent' && (
         <button
           onClick={handleSubmit}
           disabled={status === 'sending'}
-          className="mt-4 w-full font-body text-sm uppercase tracking-widest bg-[#9e2750] text-white py-3 hover:bg-[#7d1f3f] transition-colors disabled:opacity-50"
+          className="mt-4 w-full font-body text-sm uppercase tracking-widest bg-[#73223e] text-white py-3 hover:bg-[#7d1f3f] transition-colors disabled:opacity-50"
         >
           {status === 'sending' ? 'Enviando...' : 'Enviar CV'}
         </button>

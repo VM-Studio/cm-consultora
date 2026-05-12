@@ -1,70 +1,94 @@
 'use client'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { ArrowRight } from 'lucide-react'
 
 export default function About() {
   return (
-    <section id="acerca-de" className="py-16 bg-[#f0f0e6]">
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-        {/* Image */}
+    <section id="acerca-de" className="py-16 md:py-28 bg-offwhite">
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+
+        {/* Texto */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative"
+          transition={{ duration: 0.7 }}
         >
-          {/* Imagen real */}
-          <div className="relative aspect-4/3 overflow-hidden">
-            <Image
-              src="/acercade.png"
-              alt="Acerca de CM HR Studio"
-              fill
-              className="object-cover"
-            />
+          <div className="flex items-center gap-3 mb-5">
+            <span className="font-body text-xs uppercase tracking-[.3em] text-wine">Acerca de</span>
+            <div className="flex-1 h-px bg-wine/20 max-w-[60px]" />
           </div>
-          {/* Decorative border offset */}
-          <div className="absolute -bottom-4 -right-4 w-full h-full border border-[#fbd576] -z-10" />
-          {/* Floating location tag */}
-          <div className="absolute -bottom-4 left-0 md:-left-4 bg-[#fbd576] px-6 py-3 z-10">
-            <p className="font-body text-xs uppercase tracking-widest text-[#2a2a2a]">
-              Vicente López, Buenos Aires
-            </p>
+
+          <h2 className="font-display text-4xl md:text-5xl font-semibold text-wine mb-4 leading-tight">
+            Conocenos
+          </h2>
+
+          <div className="flex gap-2 mb-6">
+            <span className="w-2.5 h-2.5 rounded-full bg-wine" />
+            <span className="w-2.5 h-2.5 rounded-full bg-pink" />
+            <span className="w-2.5 h-2.5 rounded-full bg-gold" />
           </div>
+
+          <p className="font-body text-sm text-[#444] leading-relaxed mb-4">
+            En CM HR Studio creemos en el poder del talento para generar cambios reales.
+          </p>
+          <p className="font-body text-sm text-[#444] leading-relaxed mb-10">
+            Somos un equipo de profesionales apasionados por el desarrollo humano y organizacional. Trabajamos junto a cada cliente para construir culturas más fuertes, equipos más comprometidos y líderes capaces de inspirar.
+          </p>
+
+          <a
+            href="#servicios"
+            className="inline-flex items-center gap-2 font-body text-sm rounded-lg bg-wine text-white px-7 py-3 hover:bg-wine-dark transition-all"
+          >
+            Más sobre nosotros <ArrowRight size={14} />
+          </a>
         </motion.div>
 
-        {/* Text */}
+        {/* Imagen */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
+          className="relative flex justify-center items-center mt-6 md:mt-0"
         >
-          <p className="font-body text-xs uppercase tracking-[0.3em] text-[#9e2750] mb-4">
-            Acerca de
-          </p>
-          <h2 className="font-display text-4xl md:text-5xl font-light text-[#2a2a2a] mb-4 leading-tight">
-            Camila Mauro Studio
-          </h2>
-          <div className="w-12 h-px bg-[#9e2750] mb-6" />
-          <p className="font-body text-base text-[#2a2a2a]/70 leading-relaxed mb-4">
-            CM – HR Studio nace en el año 2008 con el propósito de acompañar organizaciones y personas en procesos de desarrollo, aprendizaje y evolución humana.
-          </p>
-          <p className="font-body text-base text-[#2a2a2a]/70 leading-relaxed mb-8">
-            Con una mirada cercana, estratégica y centrada en las personas, diseñamos experiencias de gestión del talento y capacitación que fortalecen equipos, potencian habilidades y generan culturas de trabajo más comprometidas, humanas y sostenibles.
-          </p>
-          {/* Pillars */}
-          <div className="grid grid-cols-3 gap-4">
-            {['Gestión de Talento', 'Capacitación', 'Desarrollo Humano'].map((p, i) => (
-              <div
-                key={i}
-                className="border-t-2 border-[#9e2750] pt-4 text-center"
-              >
-                <p className="font-display text-sm italic text-[#9e2750]">{p}</p>
-              </div>
-            ))}
+          {/* Rectángulo decorativo con borde dorado desplazado */}
+          <div
+            className="absolute"
+            style={{
+              top: '14px',
+              right: '14px',
+              bottom: '-14px',
+              left: '-14px',
+              borderRadius: '2.5rem 1rem',
+              border: '1.5px solid #c9a96e',
+              zIndex: 0,
+            }}
+          />
+
+          {/* Imagen con esquinas redondeadas asimétricas */}
+          <div
+            className="relative z-10 overflow-hidden w-full"
+            style={{ borderRadius: '2.5rem 1rem', aspectRatio: '4/3' }}
+          >
+            <Image
+              src="/conocenos.png"
+              alt="Equipo CM HR Studio"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover object-center"
+            />
+          </div>
+
+          {/* Dots decorativos abajo a la derecha */}
+          <div className="absolute bottom-6 right-2 md:-right-6 flex flex-col gap-2 z-20">
+            <span className="w-3 h-3 rounded-full bg-pink" />
+            <span className="w-3 h-3 rounded-full bg-sage" />
+            <span className="w-3 h-3 rounded-full" style={{ backgroundColor: '#c9a96e' }} />
           </div>
         </motion.div>
+
       </div>
     </section>
   )
