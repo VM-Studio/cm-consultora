@@ -1,97 +1,262 @@
 'use client'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
-import { ArrowRight, Users, Target, TrendingUp, Heart } from 'lucide-react'
+import { ArrowRight, ArrowLeft, Users, Target, TrendingUp, Heart } from 'lucide-react'
+import { useState, useEffect, useCallback } from 'react'
+
+const slides = [
+  {
+    desktopImg: '/hero.png',
+    mobileImg: '/celular.png',
+    title: (
+      <>
+        <span className="text-[1.1em] italic">Potenciando</span> personas,{' '}
+        <span
+          className="text-[1.1em] italic"
+          style={{
+            background: 'linear-gradient(to right, #000000, #73223e)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}
+        >
+          transformando
+        </span>{' '}
+        <span className="text-[1.1em] italic">organizaciones</span>
+      </>
+    ),
+    subtitle: null,
+  },
+  {
+    desktopImg: '/hero2.png',
+    mobileImg: '/hero2.png',
+    title: (
+      <>
+        Donde el <span className="text-[1.1em] italic">talento</span>{' '}
+        <span
+          className="text-[1.1em] italic"
+          style={{
+            background: 'linear-gradient(to right, #000000, #73223e)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}
+        >
+          encuentra
+        </span>{' '}
+        su <span className="text-[1.1em] italic">dirección</span>
+      </>
+    ),
+    subtitle: null,
+  },
+  {
+    desktopImg: '/hero3.png',
+    mobileImg: '/hero3.png',
+    title: (
+      <>
+        Tu{' '}
+        <span
+          className="text-[1.1em] italic"
+          style={{
+            background: 'linear-gradient(to right, #000000, #73223e)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}
+        >
+          equipo
+        </span>{' '}
+        es tu mayor <span className="text-[1.1em] italic">activo</span>
+      </>
+    ),
+    subtitle: null,
+  },
+]
 
 export default function Hero() {
-  return (
-    <section id="home" className="relative md:min-h-screen md:flex md:items-center md:overflow-hidden">
+  const [current, setCurrent] = useState(0)
 
-      {/* ── DESKTOP: imagen de fondo full-screen ── */}
-      <div className="absolute inset-0 z-0 hidden md:block">
-        <Image
-          src="/hero.png"
-          alt="Hero background"
-          fill
-          className="object-cover object-center"
-          priority
-          unoptimized
-        />
+  const next = useCallback(() => setCurrent(c => (c + 1) % slides.length), [])
+  const prev = useCallback(() => setCurrent(c => (c - 1 + slides.length) % slides.length), [])
+
+  useEffect(() => {
+    const timer = setInterval(next, 10000)
+    return () => clearInterval(timer)
+  }, [next])
+
+  return (
+    <section id="home" className="relative md:h-screen md:flex md:items-start md:overflow-hidden mb-0">
+
+      {/* ── DESKTOP: imagen de fondo full-screen con carrusel ── */}
+      <div className="absolute inset-0 z-0 hidden md:block" style={{ top: 0 }}>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.7 }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={slides[current].desktopImg}
+              alt="Hero background"
+              fill
+              className="object-cover object-center"
+              priority
+              unoptimized
+            />
+          </motion.div>
+        </AnimatePresence>
       </div>
 
-      {/* ── MOBILE: imagen celular.png como fondo, título y botón encima ── */}
+      {/* ── MOBILE: imagen como fondo, título y botón encima ── */}
       <div className="relative md:hidden w-full">
-        {/* Espaciador exacto al alto del navbar fijo */}
         <div className="h-14.5" />
-        {/* Imagen sin ningún padding, pegada al espaciador */}
         <div className="relative w-full">
-          <Image
-            src="/celular.png"
-            alt="Hero background"
-            width={800}
-            height={1100}
-            className="w-full h-auto block"
-            priority
-            unoptimized
-          />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.7 }}
+            >
+              <Image
+                src={slides[current].mobileImg}
+                alt="Hero background"
+                width={800}
+                height={1100}
+                className="w-full h-auto block"
+                priority
+                unoptimized
+              />
+            </motion.div>
+          </AnimatePresence>
         </div>
-        {/* Título + botón centrados, por encima de la imagen */}
+        {/* Título + botón centrados */}
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center" style={{ top: '58px' }}>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9 }}
-            className="flex flex-col items-center"
-          >
-            <h1
-              className="font-display text-4xl font-semibold leading-tight mb-3"
-              style={{ color: '#73223e' }}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col items-center"
             >
-              Potenciamos personas, transformamos organizaciones
-            </h1>
-            <p
-              className="font-body text-sm leading-relaxed mb-8 max-w-xs text-left"
-              style={{ color: '#73223e' }}
-            >
-              Acompañamos a empresas y profesionales a desarrollar su máximo potencial
-            </p>
-            <a
-              href="#acerca-de"
-              className="inline-flex items-center gap-2 font-body text-sm rounded-lg bg-wine text-white px-8 py-3.5 hover:bg-wine-dark transition-colors"
-            >
-              Conocé más <ArrowRight size={15} />
-            </a>
-          </motion.div>
+              <h1 className="font-display text-4xl font-semibold leading-tight mb-3" style={{ color: '#73223e' }}>
+                {slides[current].title}
+              </h1>
+              {slides[current].subtitle && (
+                <p className="font-body text-sm leading-relaxed mb-8 max-w-xs text-left" style={{ color: '#73223e' }}>
+                  {slides[current].subtitle}
+                </p>
+              )}
+              <a
+                href="#acerca-de"
+                className="inline-flex items-center gap-2 font-display text-base rounded-md bg-wine text-white px-12 py-3.5 hover:bg-wine-dark transition-colors"
+              >
+                Conocé más <ArrowRight size={15} />
+              </a>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        {/* Flechas mobile */}
+        <button
+          onClick={prev}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-20 transition-opacity hover:opacity-70"
+          style={{ marginTop: '29px' }}
+          aria-label="Anterior"
+        >
+          <ArrowLeft size={22} color="#73223e" />
+        </button>
+        <button
+          onClick={next}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-20 transition-opacity hover:opacity-70"
+          style={{ marginTop: '29px' }}
+          aria-label="Siguiente"
+        >
+          <ArrowRight size={22} color="#73223e" />
+        </button>
+        {/* Dots mobile */}
+        <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`w-2 h-2 rounded-full transition-all ${i === current ? 'bg-wine scale-125' : 'bg-wine/40'}`}
+              aria-label={`Ir a slide ${i + 1}`}
+            />
+          ))}
         </div>
       </div>
 
       {/* ── DESKTOP: contenido (título + botón) ── */}
-      <div className="relative z-10 hidden md:block max-w-7xl mx-auto px-6 pt-40 pb-72 w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9 }}
-          className="max-w-lg"
+      <div className="relative z-10 hidden md:block w-full h-full">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.6 }}
+            className={`absolute w-full px-6 ${
+              current === 0
+                ? 'top-40 left-0 pl-24'
+                : current === 1
+                ? 'top-1/3 -translate-y-1/2 flex flex-col items-center text-center'
+                : 'top-[45%] -translate-y-1/2 flex flex-col items-center text-center'
+            }`}
+          >
+            <div className={current === 0 ? 'max-w-lg' : 'max-w-2xl mx-auto flex flex-col items-center'}>
+              <h1 className="font-display text-6xl font-semibold leading-tight mb-4" style={{ color: '#73223e' }}>
+                {slides[current].title}
+              </h1>
+              {slides[current].subtitle && (
+                <p className="font-body text-base leading-relaxed mb-10" style={{ color: '#73223e' }}>
+                  {slides[current].subtitle}
+                </p>
+              )}
+              <a
+                href="#acerca-de"
+                className="inline-flex items-center gap-2 font-display text-base rounded-md bg-wine text-white px-12 py-3.5 hover:bg-wine-dark transition-colors"
+              >
+                Conocé más <ArrowRight size={15} />
+              </a>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Flecha izquierda desktop */}
+        <button
+          onClick={prev}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-20 transition-opacity hover:opacity-70"
+          aria-label="Anterior"
         >
-          <h1
-            className="font-display text-6xl font-semibold leading-tight mb-4"
-            style={{ color: '#73223e' }}
-          >
-            Potenciamos personas, transformamos organizaciones
-          </h1>
-          <p
-            className="font-body text-base leading-relaxed mb-10"
-            style={{ color: '#73223e' }}
-          >
-            Acompañamos a empresas y profesionales a desarrollar su máximo potencial
-          </p>
-          <a
-            href="#acerca-de"
-            className="inline-flex items-center gap-2 font-body text-sm rounded-lg bg-wine text-white px-8 py-3.5 hover:bg-wine-dark transition-colors"
-          >
-            Conocé más <ArrowRight size={15} />
-          </a>
-        </motion.div>
+          <ArrowLeft size={26} color="#73223e" />
+        </button>
+
+        {/* Flecha derecha desktop */}
+        <button
+          onClick={next}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-20 transition-opacity hover:opacity-70"
+          aria-label="Siguiente"
+        >
+          <ArrowRight size={26} color="#73223e" />
+        </button>
+
+        {/* Dots desktop */}
+        <div className="absolute bottom-28 left-6 flex gap-2 z-20">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`w-2.5 h-2.5 rounded-full transition-all ${i === current ? 'bg-wine scale-125' : 'bg-wine/40'}`}
+              aria-label={`Ir a slide ${i + 1}`}
+            />
+          ))}
+        </div>
       </div>
 
       {/* ── Barra de valores ── */}
@@ -103,7 +268,7 @@ export default function Hero() {
             { icon: <TrendingUp size={24} />, title: 'Resultados reales',   desc: 'Impacto medible en el desarrollo y desempeño.' },
             { icon: <Heart size={24} />,      title: 'Pasión y compromiso', desc: 'Acompañamos cada proceso con dedicación.' },
           ].map((v, i) => (
-            <div key={i} className="flex items-center gap-3">
+            <div key={i} className="flex items-center gap-3 transition-transform duration-300 hover:scale-125 cursor-default origin-left md:origin-center">
               <span className="shrink-0" style={{ color: '#e9ad69' }}>{v.icon}</span>
               <div>
                 <p className="font-display text-[10px] md:text-[11px] font-medium text-white uppercase tracking-wide">{v.title}</p>

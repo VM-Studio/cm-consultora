@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-      scrolled ? 'shadow-sm py-1 md:py-2' : 'py-2 md:py-3'
+      scrolled ? 'shadow-sm py-0.5 md:py-1' : 'py-1 md:py-2'
     }`} style={{ backgroundColor: '#f6ebde' }}>
       <div className="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between gap-4">
 
@@ -32,12 +32,12 @@ export default function Navbar() {
           <Image
             src="/logo.png"
             alt="CM HR Studio"
-            width={62}
-            height={62}
-            className="object-contain md:w-20 md:h-20"
+            width={50}
+            height={50}
+            className="object-contain md:w-15 md:h-15"
           />
           <div>
-            <p className="font-display font-semibold text-wine text-lg md:text-xl leading-none">CM HR Studio</p>
+            <p className="font-display font-semibold text-wine text-base md:text-lg leading-none">CM HR Studio</p>
             {/* Tagline: oculto en mobile, visible en desktop */}
             <p className="hidden md:block font-body text-[10px] text-[#73223e]/60 tracking-wide leading-none mt-1">
               Gestión de Talento | Capacitación | Desarrollo Humano

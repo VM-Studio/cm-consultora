@@ -31,15 +31,15 @@ export default function About() {
           </div>
 
           <p className="font-body text-sm text-[#444] leading-relaxed mb-4">
-            En CM HR Studio creemos en el poder del talento para generar cambios reales.
+            CM HR Studio entiende el poder del talento como motor para generar cambios reales.
           </p>
           <p className="font-body text-sm text-[#444] leading-relaxed mb-10">
-            Somos un equipo de profesionales apasionados por el desarrollo humano y organizacional. Trabajamos junto a cada cliente para construir culturas más fuertes, equipos más comprometidos y líderes capaces de inspirar.
+            Un espacio orientado al desarrollo humano y organizacional, acompañando a cada organización en la construcción de culturas más sólidas, equipos comprometidos y liderazgos capaces de inspirar.
           </p>
 
           <a
             href="#servicios"
-            className="inline-flex items-center gap-2 font-body text-sm rounded-lg bg-wine text-white px-7 py-3 hover:bg-wine-dark transition-all"
+            className="inline-flex items-center gap-2 font-display text-base rounded-md bg-wine text-white px-7 py-3 hover:bg-wine-dark transition-all"
           >
             Más sobre nosotros <ArrowRight size={14} />
           </a>

@@ -9,7 +9,7 @@ export default function CTABanner() {
       {/* BG image con transparencia */}
       <div className="absolute inset-0 z-0">
         <Image src="/fondo.png" alt="" fill className="object-cover object-center" />
-        <div className="absolute inset-0 bg-white/50" />
+        <div className="absolute inset-0 bg-white/25" />
       </div>
 
       <motion.div
@@ -35,7 +35,7 @@ export default function CTABanner() {
 
         <a
           href="#contacto"
-          className="inline-flex items-center gap-2 font-body text-sm rounded-lg px-8 py-3.5 font-medium text-white transition-colors shrink-0 hover:opacity-90"
+          className="inline-flex items-center gap-2 font-display text-base rounded-md px-8 py-3.5 font-medium text-white transition-colors shrink-0 hover:opacity-90"
           style={{ backgroundColor: '#73223e' }}
         >
           Agendá una reunión <ArrowRight size={15} />

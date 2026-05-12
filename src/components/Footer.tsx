@@ -78,6 +78,9 @@ export default function Footer() {
           <p className="font-body text-xs" style={{ color: '#73223e70' }}>
             © {new Date().getFullYear()} CM HR Studio. Todos los derechos reservados.
           </p>
+          <p className="font-body text-xs" style={{ color: '#73223e50' }}>
+            Hecha por VM Studio
+          </p>
           <div className="flex gap-6">
             {['Política de privacidad', 'Términos y condiciones'].map(t => (
               <a key={t} href="#" className="font-body text-xs transition-colors hover:opacity-70" style={{ color: '#73223e70' }}>

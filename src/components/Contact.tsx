@@ -54,7 +54,7 @@ export default function Contact() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
               {[
                 { icon: Phone,  label: 'Teléfono / WhatsApp', val: '+54 11 5181 6206',    href: 'https://wa.me/541151816206' },
-                { icon: Mail,   label: 'Email',               val: 'hola@cmhrstudio.com', href: 'mailto:hola@cmhrstudio.com' },
+                { icon: Mail,   label: 'Email',               val: 'contacto@cmhrstudio.com', href: 'mailto:contacto@cmhrstudio.com' },
                 { icon: MapPin, label: 'Ubicación',           val: 'Buenos Aires, Argentina', href: '#' },
               ].map((c, i) => {
                 const Icon = c.icon

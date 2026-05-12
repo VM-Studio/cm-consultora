@@ -3,13 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { ArrowRight, ChevronUp, Users, GraduationCap, FileText } from 'lucide-react'
 import { useState } from 'react'
+import ClientsCarousel from './ClientsCarousel'
 
 const services = [
   {
     icon:    Users,
     iconBg:  '#73223e',
     title:   'Gestión de Talento',
-    desc:    'Atraemos, seleccionamos y desarrollamos el talento que tu organización necesita para crecer.',
+    desc:    'Identificación, selección y desarrollo del talento que tu organización necesita para crecer.',
     img:     '/talento.png',
     slug:    'gestion-de-talento',
     items: [
@@ -23,8 +24,8 @@ const services = [
   {
     icon:    GraduationCap,
     iconBg:  '#676537',
-    title:   'Capacitación & Formación',
-    desc:    'Diseñamos experiencias de aprendizaje que potencian habilidades e impulsan resultados.',
+    title:   'Capacitación & Desarrollo',
+    desc:    'Diseño de experiencias de aprendizaje que potencian habilidades e impulsan resultados.',
     img:     '/capacitacion.png',
     slug:    'capacitacion',
     items: [
@@ -55,7 +56,8 @@ export default function Services() {
   const [expanded, setExpanded] = useState<number | null>(null)
 
   return (
-    <section id="servicios" className="py-16 md:py-28" style={{ backgroundColor: '#f8efe5' }}>
+    <section id="servicios" className="pt-8 md:pt-14 pb-16 md:pb-28" style={{ backgroundColor: '#f8efe5' }}>
+
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Header */}
@@ -101,7 +103,7 @@ export default function Services() {
                     alt={s.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-center scale-110 group-hover:scale-115 transition-transform duration-500"
                   />
                 </div>
 
@@ -137,7 +139,7 @@ export default function Services() {
                         {s.items.map((item, j) => (
                           <li key={j} className="flex items-start gap-2">
                             <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: s.iconBg }} />
-                            <span className="font-body text-xs text-[#555] leading-relaxed">{item}</span>
+                            <span className="font-body text-sm text-[#555] leading-relaxed">{item}</span>
                           </li>
                         ))}
                       </motion.ul>
@@ -160,6 +162,12 @@ export default function Services() {
           })}
         </div>
       </div>
+
+      {/* Carrusel de clientes — debajo de las cards */}
+      <div className="max-w-7xl mx-auto px-6 pt-16 md:pt-20">
+        <ClientsCarousel />
+      </div>
+
     </section>
   )
 }
