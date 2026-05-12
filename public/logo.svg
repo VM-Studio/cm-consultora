@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" fill="none">
+  <rect width="160" height="160" fill="#fbf5e0"/>
+  <circle cx="80" cy="60" r="34" fill="#e0b84a"/>
+  <rect x="28" y="102" width="104" height="12" rx="6" fill="#caa23a"/>
+  <text x="80" y="144" font-family="Cormorant Garamond, serif" font-size="18" text-anchor="middle" fill="#1f1f1f">CM HR</text>
+</svg>
