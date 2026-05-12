@@ -32,9 +32,9 @@ export default function Navbar() {
           <Image
             src="/logo.png"
             alt="CM HR Studio"
-            width={50}
-            height={50}
-            className="object-contain md:w-[70px] md:h-[70px]"
+            width={62}
+            height={62}
+            className="object-contain md:w-20 md:h-20"
           />
           <div>
             <p className="font-display font-semibold text-wine text-lg md:text-xl leading-none">CM HR Studio</p>
@@ -51,7 +51,7 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="font-display text-base text-[#73223e] hover:text-[#5a1a30] transition-colors"
+              className="font-display text-lg font-semibold text-[#73223e] hover:text-[#5a1a30] transition-colors"
             >
               {l.label}
             </a>

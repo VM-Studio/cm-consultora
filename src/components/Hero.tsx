@@ -21,20 +21,22 @@ export default function Hero() {
 
       {/* ── MOBILE: imagen celular.png como fondo, título y botón encima ── */}
       <div className="relative md:hidden w-full">
-        {/* Imagen ocupa toda la pantalla verticalmente */}
-        <div className="relative w-full" style={{ paddingTop: '62px' }}>
+        {/* Espaciador exacto al alto del navbar fijo */}
+        <div className="h-14.5" />
+        {/* Imagen sin ningún padding, pegada al espaciador */}
+        <div className="relative w-full">
           <Image
             src="/celular.png"
             alt="Hero background"
             width={800}
             height={1100}
-            className="w-full h-auto"
+            className="w-full h-auto block"
             priority
             unoptimized
           />
         </div>
         {/* Título + botón centrados, por encima de la imagen */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center" style={{ top: '62px' }}>
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center" style={{ top: '58px' }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -42,11 +44,17 @@ export default function Hero() {
             className="flex flex-col items-center"
           >
             <h1
-              className="font-display text-4xl font-semibold leading-tight mb-8"
+              className="font-display text-4xl font-semibold leading-tight mb-3"
               style={{ color: '#73223e' }}
             >
               Potenciamos personas, transformamos organizaciones
             </h1>
+            <p
+              className="font-body text-sm leading-relaxed mb-8 max-w-xs text-left"
+              style={{ color: '#73223e' }}
+            >
+              Acompañamos a empresas y profesionales a desarrollar su máximo potencial
+            </p>
             <a
               href="#acerca-de"
               className="inline-flex items-center gap-2 font-body text-sm rounded-lg bg-wine text-white px-8 py-3.5 hover:bg-wine-dark transition-colors"
@@ -66,11 +74,17 @@ export default function Hero() {
           className="max-w-lg"
         >
           <h1
-            className="font-display text-6xl font-semibold leading-tight mb-10"
+            className="font-display text-6xl font-semibold leading-tight mb-4"
             style={{ color: '#73223e' }}
           >
             Potenciamos personas, transformamos organizaciones
           </h1>
+          <p
+            className="font-body text-base leading-relaxed mb-10"
+            style={{ color: '#73223e' }}
+          >
+            Acompañamos a empresas y profesionales a desarrollar su máximo potencial
+          </p>
           <a
             href="#acerca-de"
             className="inline-flex items-center gap-2 font-body text-sm rounded-lg bg-wine text-white px-8 py-3.5 hover:bg-wine-dark transition-colors"

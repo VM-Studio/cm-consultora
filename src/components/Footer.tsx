@@ -27,7 +27,7 @@ export default function Footer() {
                 <li key={l}>
                   <a
                     href={`#${l.toLowerCase().replace(' ', '-')}`}
-                    className="font-body text-sm transition-colors hover:opacity-70"
+                    className="font-display text-base font-semibold transition-colors hover:opacity-70"
                     style={{ color: '#73223e' }}
                   >
                     {l}
