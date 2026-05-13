@@ -30,10 +30,10 @@ export default function About() {
             <span className="w-2.5 h-2.5 rounded-full bg-gold" />
           </div>
 
-          <p className="font-body text-sm text-[#444] leading-relaxed mb-4">
-            CM HR Studio entiende el poder del talento como motor para generar cambios reales.
+          <p className="font-body text-base text-[#444] leading-relaxed mb-4">
+            <strong>Desde sus inicios, en el año 2008</strong>, CM HR Studio entiende el poder del talento como motor para generar cambios reales.
           </p>
-          <p className="font-body text-sm text-[#444] leading-relaxed mb-10">
+          <p className="font-body text-base text-[#444] leading-relaxed mb-10">
             Un espacio orientado al desarrollo humano y organizacional, acompañando a cada organización en la construcción de culturas más sólidas, equipos comprometidos y liderazgos capaces de inspirar.
           </p>
 

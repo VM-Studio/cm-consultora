@@ -42,3 +42,8 @@ body {
 h1, h2, h3, h4 {
   font-family: 'Cormorant Garamond', serif;
 }
+
+@keyframes scroll-logos {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

@@ -94,7 +94,7 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="bg-white rounded-2xl overflow-hidden group flex flex-col"
+                className="bg-white rounded-lg overflow-hidden group flex flex-col"
               >
                 {/* Imagen */}
                 <div className="relative h-52 overflow-hidden">
