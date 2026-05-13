@@ -2,7 +2,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { ArrowRight, ArrowLeft, Users, Target, TrendingUp, Heart } from 'lucide-react'
-import { useState, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 const slides = [
   {
@@ -12,7 +12,7 @@ const slides = [
       <>
         <span className="text-[1.07em]">Potenciando</span> personas,{' '}
         <span>transformando</span>{' '}
-        <span className="text-[1.07em]">organizaciones</span>
+        <span className="text-[1.07em]">organizaciones.</span>
       </>
     ),
     subtitle: null,
@@ -22,8 +22,8 @@ const slides = [
     mobileImg: '/hero2.png',
     title: (
       <>
-        Desarrollamos <span className="text-[1.07em]">talento.</span>{' '}
-        Impulsamos <span className="text-[1.07em]">resultados.</span>
+        Desarrollando <span className="text-[1.07em]">talento.</span>{' '}
+        Impulsando <span className="text-[1.07em]">resultados.</span>
       </>
     ),
     subtitle: null,
@@ -46,6 +46,11 @@ export default function Hero() {
 
   const next = useCallback(() => setCurrent(c => (c + 1) % slides.length), [])
   const prev = useCallback(() => setCurrent(c => (c - 1 + slides.length) % slides.length), [])
+
+  useEffect(() => {
+    const timer = setInterval(next, 5000)
+    return () => clearInterval(timer)
+  }, [next])
 
   return (
     <section id="home" className="relative md:h-[110vh] md:flex md:items-start md:overflow-hidden mb-0">
@@ -106,7 +111,7 @@ export default function Hero() {
               />
               <h1 className="font-display text-4xl font-semibold leading-tight mb-8" style={{ color: '#73223e' }}>
                 <span className="text-[1.07em]">Potenciando</span> personas,{' '}
-                transformando <span className="text-[1.07em]">organizaciones</span>
+                transformando <span className="text-[1.07em]">organizaciones.</span>
               </h1>
             </div>
             <a

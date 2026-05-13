@@ -31,7 +31,7 @@ export default function About() {
           </div>
 
           <p className="font-body text-base text-[#444] leading-relaxed mb-4">
-            <strong>Desde sus inicios, en el año 2008</strong>, CM HR Studio entiende el poder del talento como motor para generar cambios reales.
+            Desde sus inicios, en el año 2008, <strong style={{ color: '#73223e' }}>CM HR Studio</strong> entiende el poder del talento como motor para generar cambios reales.
           </p>
           <p className="font-body text-base text-[#444] leading-relaxed mb-10">
             Un espacio orientado al desarrollo humano y organizacional, acompañando a cada organización en la construcción de culturas más sólidas, equipos comprometidos y liderazgos capaces de inspirar.
