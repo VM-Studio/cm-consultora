@@ -99,10 +99,14 @@ export default function Hero() {
             />
           </motion.div>
         </AnimatePresence>
-        {/* Título — subido, no tapa la cara */}
+        {/* Título */}
         <div
-          className="absolute inset-x-0 z-10 flex flex-col items-center px-6 text-center"
-          style={{ top: current === 0 ? '80px' : '50%', transform: current === 0 ? 'none' : 'translateY(-50%)' }}
+          className={`absolute z-10 flex flex-col items-center px-6 text-center ${
+            current === 0
+              ? 'inset-x-0'
+              : 'inset-0 justify-center'
+          }`}
+          style={current === 0 ? { top: '80px' } : {}}
         >
           <AnimatePresence mode="wait">
             <motion.div
