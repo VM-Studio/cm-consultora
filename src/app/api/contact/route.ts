@@ -1,12 +1,25 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { Resend } from 'resend';
+import { NextResponse } from 'next/server';
 
-export async function POST(req: NextRequest) {
-  const { name, email, message } = await req.json()
-  if (!name || !email || !message) {
-    return NextResponse.json({ error: 'Campos incompletos' }, { status: 400 })
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+export async function POST(request: Request) {
+  const { name, email, message } = await request.json();
+
+  try {
+    await resend.emails.send({
+      from: 'contacto@cmhrstudio.com',
+      to: 'contacto@cmhrstudio.com',
+      subject: `Consulta de ${name}`,
+      html: `
+        <p><strong>Nombre:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Mensaje:</strong> ${message}</p>
+      `,
+    });
+
+    return NextResponse.json({ ok: true });
+  } catch (error) {
+    return NextResponse.json({ ok: false, error }, { status: 500 });
   }
-  // Configurar aquí el envío de email (nodemailer, Resend, etc.)
-  // Ejemplo con Resend: https://resend.com/docs
-  console.log('Nuevo mensaje:', { name, email, message })
-  return NextResponse.json({ ok: true })
 }
