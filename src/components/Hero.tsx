@@ -78,49 +78,74 @@ export default function Hero() {
         </AnimatePresence>
       </div>
 
-      {/* ── MOBILE: imagen fija celular.png + título fijo ── */}
+      {/* ── MOBILE: carrusel celular.png / celular2.png / celular3.png ── */}
       <div className="relative md:hidden w-full">
         <div className="h-14.5" />
+        {/* Imagen */}
         <div className="relative w-full">
-          <Image
-            src="/celular.png"
-            alt="Hero background"
-            width={800}
-            height={1100}
-            className="w-full h-auto block"
-            priority
-            unoptimized
-          />
-        </div>
-        {/* Título + botón centrados */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center" style={{ top: '58px' }}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="flex flex-col items-center"
-          >
-            <div className="relative">
-              <div
-                className="absolute inset-0 -z-10 blur-3xl rounded-full scale-x-100 scale-y-150"
-                style={{ background: 'rgba(255,255,255,1)' }}
-              />
-              <div
-                className="absolute inset-0 -z-10 blur-xl rounded-full scale-x-90 scale-y-125"
-                style={{ background: 'rgba(255,255,255,1)' }}
-              />
-              <h1 className="font-display text-4xl font-semibold leading-tight mb-8" style={{ color: '#73223e' }}>
-                <span className="text-[1.07em]">Potenciando</span> personas,{' '}
-                transformando <span className="text-[1.07em]">organizaciones.</span>
-              </h1>
-            </div>
-            <a
-              href="#acerca-de"
-              className="inline-flex items-center gap-2 font-display text-base rounded-md bg-wine text-white px-12 py-3.5 hover:bg-wine-dark transition-colors"
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.7 }}
             >
-              Conocé más <ArrowRight size={15} />
-            </a>
-          </motion.div>
+              <Image
+                src={['/celular.png', '/celular2.png', '/celular3.png'][current]}
+                alt="Hero background"
+                width={800}
+                height={1100}
+                className="w-full h-auto block"
+                priority
+                unoptimized
+              />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        {/* Título centrado con sombra blanca */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center" style={{ top: '58px' }}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col items-center"
+            >
+              <div className="relative">
+                <div
+                  className="absolute inset-0 -z-10 blur-3xl rounded-full scale-x-100 scale-y-150"
+                  style={{ background: 'rgba(255,255,255,1)' }}
+                />
+                <div
+                  className="absolute inset-0 -z-10 blur-xl rounded-full scale-x-90 scale-y-125"
+                  style={{ background: 'rgba(255,255,255,1)' }}
+                />
+                <h1 className="font-display text-4xl font-semibold leading-tight mb-8" style={{ color: '#73223e' }}>
+                  {slides[current].title}
+                </h1>
+              </div>
+              <a
+                href="#acerca-de"
+                className="inline-flex items-center gap-2 font-display text-base rounded-md bg-wine text-white px-12 py-3.5 hover:bg-wine-dark transition-colors"
+              >
+                Conocé más <ArrowRight size={15} />
+              </a>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        {/* Dots mobile */}
+        <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`w-2 h-2 rounded-full transition-all ${i === current ? 'bg-wine scale-125' : 'bg-wine/40'}`}
+              aria-label={`Ir a slide ${i + 1}`}
+            />
+          ))}
         </div>
       </div>
 
