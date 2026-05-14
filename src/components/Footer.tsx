@@ -44,7 +44,7 @@ export default function Footer() {
 
               {/* LinkedIn */}
               <a
-                href="https://linkedin.com/in/camilaroxanamauro"
+                href="https://www.linkedin.com/company/cmhrstudio/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full border flex items-center justify-center transition-all hover:opacity-70"
