@@ -79,8 +79,8 @@ export default function Hero() {
       </div>
 
       {/* ── MOBILE: carrusel celular.png / celular2.png / celular3.png ── */}
-      <div className="relative md:hidden w-full" style={{ height: '100svh' }}>
-        {/* Imágenes apiladas con position absolute — tamaño fijo, sin saltos */}
+      <div className="relative md:hidden w-full" style={{ height: '80svh' }}>
+        {/* Imágenes — recortadas desde arriba con object-top */}
         <AnimatePresence mode="sync">
           <motion.div
             key={current}
@@ -94,14 +94,14 @@ export default function Hero() {
               src={['/celular.png', '/celular2.png', '/celular3.png'][current]}
               alt="Hero background"
               fill
-              className="object-cover object-center"
+              className="object-cover object-top"
               priority
               unoptimized
             />
           </motion.div>
         </AnimatePresence>
-        {/* Título centrado con sombra blanca */}
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center" style={{ top: '58px' }}>
+        {/* Título — subido, no tapa la cara */}
+        <div className="absolute inset-x-0 z-10 flex flex-col items-center px-6 text-center" style={{ top: '24px' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
@@ -112,7 +112,6 @@ export default function Hero() {
               className="flex flex-col items-center"
             >
               <div className="relative">
-                {/* Sombra blanca — z positivo para quedar sobre la imagen */}
                 <div
                   className="absolute inset-0 blur-3xl rounded-full scale-x-100 scale-y-150"
                   style={{ background: 'rgba(255,255,255,1)', zIndex: -1 }}
