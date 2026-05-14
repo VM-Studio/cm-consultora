@@ -8,7 +8,7 @@ export async function POST(request: Request) {
 
   try {
     await resend.emails.send({
-      from: 'contacto@cmhrstudio.com',
+      from: 'Contacto CM HR Studio <onboarding@resend.dev>',
       to: 'contacto@cmhrstudio.com',
       subject: `Consulta de ${name}`,
       html: `
