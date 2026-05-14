@@ -79,49 +79,47 @@ export default function Hero() {
       </div>
 
       {/* ── MOBILE: carrusel celular.png / celular2.png / celular3.png ── */}
-      <div className="relative md:hidden w-full">
-        <div className="h-14.5" />
-        {/* Imagen */}
-        <div className="relative w-full">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              <Image
-                src={['/celular.png', '/celular2.png', '/celular3.png'][current]}
-                alt="Hero background"
-                width={800}
-                height={1100}
-                className="w-full h-auto block"
-                priority
-                unoptimized
-              />
-            </motion.div>
-          </AnimatePresence>
-        </div>
+      <div className="relative md:hidden w-full" style={{ height: '100svh' }}>
+        {/* Imágenes apiladas con position absolute — tamaño fijo, sin saltos */}
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={current}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={['/celular.png', '/celular2.png', '/celular3.png'][current]}
+              alt="Hero background"
+              fill
+              className="object-cover object-center"
+              priority
+              unoptimized
+            />
+          </motion.div>
+        </AnimatePresence>
         {/* Título centrado con sombra blanca */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center" style={{ top: '58px' }}>
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center" style={{ top: '58px' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5 }}
               className="flex flex-col items-center"
             >
               <div className="relative">
+                {/* Sombra blanca — z positivo para quedar sobre la imagen */}
                 <div
-                  className="absolute inset-0 -z-10 blur-3xl rounded-full scale-x-100 scale-y-150"
-                  style={{ background: 'rgba(255,255,255,1)' }}
+                  className="absolute inset-0 blur-3xl rounded-full scale-x-100 scale-y-150"
+                  style={{ background: 'rgba(255,255,255,1)', zIndex: -1 }}
                 />
                 <div
-                  className="absolute inset-0 -z-10 blur-xl rounded-full scale-x-90 scale-y-125"
-                  style={{ background: 'rgba(255,255,255,1)' }}
+                  className="absolute inset-0 blur-xl rounded-full scale-x-90 scale-y-125"
+                  style={{ background: 'rgba(255,255,255,1)', zIndex: -1 }}
                 />
                 <h1 className="font-display text-4xl font-semibold leading-tight mb-8" style={{ color: '#73223e' }}>
                   {slides[current].title}
