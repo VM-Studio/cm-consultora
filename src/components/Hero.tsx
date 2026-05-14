@@ -79,8 +79,7 @@ export default function Hero() {
       </div>
 
       {/* ── MOBILE: carrusel celular.png / celular2.png / celular3.png ── */}
-      <div className="relative md:hidden w-full" style={{ height: '80svh' }}>
-        {/* Imágenes — recortadas desde arriba con object-top */}
+      <div className="relative md:hidden w-full" style={{ height: '100svh' }}>
         <AnimatePresence mode="sync">
           <motion.div
             key={current}
@@ -94,7 +93,7 @@ export default function Hero() {
               src={['/celular.png', '/celular2.png', '/celular3.png'][current]}
               alt="Hero background"
               fill
-              className="object-cover object-top"
+              className="object-cover object-center"
               priority
               unoptimized
             />
